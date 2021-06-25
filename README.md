@@ -7,6 +7,8 @@ Bean YT Downloader is a simple and safe Youtube video and audio that's powered b
 2. Copy Youtube Link in Bean YT Downloader
 3. Select Audio or Video and Download!
 
+NOTE: This program should only be used to download videos that you own or have the rights to.
+
 ## PROGRAM FEATURES
 * Download YouTube Videos (.mp4) and Audio (.mp3)
 * Select Output Location
