@@ -27,5 +27,9 @@ NOTE: This program should only be used to download videos that you own or have t
 
 ## VERSION HISTORY
 
+### 1.05 - 6/26/21
+* Added internal conversion of MP4 ---> MP3 files for better MP3 encoding.
+
 ### 1.00 - 6/24/21
 * The first release of this program.
+
