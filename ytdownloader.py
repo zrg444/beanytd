@@ -7,6 +7,7 @@ import time
 from win10toast import ToastNotifier
 import ctypes
 import glob
+import moviepy.editor as mp
 
 myappid = 'Bean.YTDownloader.Downloader.1'
 ctypes.windll.shell32.SetCurrentProcessExplicitAppUserModelID(myappid)
@@ -65,7 +66,7 @@ def yt_download(window):
         videofile.download(output_path = dirloc)
     if values["video"] == False:
         #str_title = str(title).replace("&", "").replace(":","").replace("?","").replace("*","").replace("|","")
-        audiofile = yt.streams.filter(only_audio=True).first()
+        audiofile = yt.streams.filter(progressive=True).get_highest_resolution()
         fsize = int(audiofile.filesize)
         file = audiofile.download(output_path = dirloc+"/")
         download_dir = glob.glob(dirloc+"/*.mp4")
@@ -73,7 +74,12 @@ def yt_download(window):
         print(old_file)
         new_file = old_file.replace(".mp4",".mp3")
         print(new_file)
-        os.rename(old_file, new_file)
+
+        vid_file = mp.VideoFileClip(old_file)
+        vid_file.audio.write_audiofile(new_file)
+        vid_file.close()
+        os.remove(old_file)
+
     
     tn.show_toast(title="Download Complete!", msg="Your Youtube download is ready! Enjoy!", icon_path=coffee_icon)
 
@@ -84,7 +90,7 @@ def help_window():
     help_layout = [
         [sg.Text("How to Use Bean YTDownloader", font=("bold, 15"))],
         [sg.Text("Bean YTDownloader is a simple and lightweight program that allows you to\ndownload Youtube video and audio quickly and safely.\n1. Select download location.\n2. Paste Youtube Link\n3. Wait for the download notifaction.\n4. Enjoy your tunes or video!\n5. Buy me a coffee! (Optional)\n\nThis program uses the Pytube and PySimpleGUI Python Packages.")],
-        [sg.Text("Version 1.00")],
+        [sg.Text("Version 1.05")],
         [sg.Image(filename=bmc_logo, enable_events=True, key="bmc")],
         [sg.Button("Close", key="close")]
     ]
