@@ -20,7 +20,7 @@ NOTE: This program should only be used to download videos that you own or have t
 * Selection of Quality
 
 ## KNOWN BUGS/ISSUES
-* None :)
+* Bean YTD is currently unable to download videos/audio due to Youtube changing APIs and links. This will be be fixed ASAP!
 
 ## REQUIRED EXTERNAL PROGRAMS
 * None :)
